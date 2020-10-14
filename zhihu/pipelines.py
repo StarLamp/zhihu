@@ -20,7 +20,7 @@ class CnblogspiderPipeline:
     def process_item(self,item,spider):
         if item['title']:
             line = json.dumps(dict(item))+"\n"
-            self.file.write(line)
+            self.file.write(line.encode(encoding='utf-8'))
             print(str)
             return item
         else:

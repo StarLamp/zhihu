@@ -17,5 +17,15 @@ class CnblogsItem(scrapy.Item):
     title = scrapy.Field()
     content = scrapy.Field()
     time = scrapy.Field()
+    file_urls = scrapy.Field()
+    files = scrapy.Field()
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
+
+class BaiduPicItme(scrapy.Item):
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
+    search_word = scrapy.Field()
+
 
 

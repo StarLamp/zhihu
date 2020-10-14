@@ -12,6 +12,19 @@ BOT_NAME = 'zhihu'
 SPIDER_MODULES = ['zhihu.spiders']
 NEWSPIDER_MODULE = 'zhihu.spiders'
 
+FILES_STORE = './cnblogs'
+FILES_URLS_FIELD = 'file_urls'
+_RESULT_FIELD = 'files'
+FILES_EXPIRES = 30 #30天过期
+
+IMAGES_STORE = './cnblogs'
+IMAGES_URLS_FIELD= 'image_urls'
+IMAGES_RESULT_FIELD = 'images'
+IMAGES_THUMBS = {
+    'small': (50, 50),
+    'big': (270, 270),
+}
+IMAGETS_EXPIRES = 30
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'zhihu (+http://www.yourdomain.com)'
@@ -64,7 +77,9 @@ ROBOTSTXT_OBEY = False
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'zhihu.pipelines.ZhihuPipeline': 300,
-    'zhihu.pipelines.CnblogspiderPipeline':300
+    # 'zhihu.pipelines.CnblogspiderPipeline':300,
+    'scrapy.pipelines.images.ImagesPipeline':1,
+    'scrapy.pipelines.files.FilesPipeline':1
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
